@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+body {
+  font-family: "Yu Gothic", YuGothic, sans-serif !important;
+}
+
+.container {
+  width: 960px;
+  max-width: 100%;
+  margin: 15px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.folder {
+display: none;
+  /* margin: 70px 30px 0 0;
+  border: 1px solid #eee; */
+}
+
+.folder-btn {
+  text-decoration: none;
+  color: #333;
+  background-color: #ccc;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+.folder-btn:hover {
+  opacity: 0.7;
+}
+.folder ul li {
+  margin-bottom: 10px;
+}
+.title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding: 16px;
+}
+.todo-list ul {
+  border: 1px solid #eee;
+}
+
+ul > li {
+  padding-bottom: 10px;
+}
+
+#new_todo {
+  padding: 8px;
+  border-radius: 3px;
+  width: 490px;
+  margin-right: 30px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+#new_todo:focus {
+  outline: none;
+  border: 1px solid #eee;
+  box-shadow: 1px 2px 6px #ccc; /* 影の設定 */
+}
+
+.delete_todo {
+  float: right;
+  display: inline-block;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  background-color: #eb3f60;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  transition: 0.3s; /* なめらか変化 */
+  font-size: 12px;
+}
+.delete_todo:hover {
+  background-color: #fff;
+  color: #eb3f60;
+  border: 1px solid #eb3f60;
+}
+.done {
+  text-decoration: line-through;
+  font-style: italic;
+  color: #ccc;
+}
+
+#todo_template {
+  display: none;
+}
+form {
+  margin-bottom: 30px;
+}
+
+form .form-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+li.mb-3 {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+input[type="submit"] {
+  display: inline-block;
+  border-radius: 10%; /* 角丸       */
+  font-size: 16px; /* 文字サイズ */
+  text-align: center; /* 文字位置   */
+  cursor: pointer; /* カーソル   */
+  padding: 10px; /* 余白       */
+  background: #2cb696; /* 背景色     */
+  color: #ffffff; /* 文字色     */
+  line-height: 1em; /* 1行の高さ  */
+  transition: 0.3s; /* なめらか変化 */
+  box-shadow: 1px 2px 6px #ccc; /* 影の設定 */
+  border: 1px solid #2cb696; /* 枠の指定 */
+}
+input[type="submit"]:hover {
+  box-shadow: none; /* カーソル時の影消去 */
+  color: #2cb696; /* 背景色     */
+  background: #ffffff; /* 文字色     */
+}

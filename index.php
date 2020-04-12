@@ -74,7 +74,7 @@ $done_todos = $todoApp->getTrash();
         </li>
         <?php endforeach; ?>
 
-        <li id="done_template" data-id="" class="done_todo">
+        <li id="done_template" data-id="" data-title="" class="done_todo">
         <i class="fas fa-check-circle todo-back"></i>
           <span class="todo_title"></span>
         </li>

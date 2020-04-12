@@ -68,6 +68,7 @@ $(function() {
           $li
             .attr("id", "done_" + id)   //id
             .data("id", id)             //data属性
+            .data("title", title)
             .find(".todo_title")            //_todo-titleクラスの中身にtitleを挿入
             .text(title);
           $(".done_todos").prepend($li.fadeIn());  //todosの一番上にfadeinしながら追加
@@ -132,13 +133,14 @@ $(function() {
           mode: "back",       //modeを渡す
           token: $("#token").val()
         },
-        function(res) {
+        function() {
           $("#done_" + id).slideUp(100);    // doneの処理はここまで
 
           var $li = $("#todo_template").clone();
         $li
           .attr("id", "todo_" + id)   //id
-          .data("id", id)             //data属性
+          .data("id", id)
+          .data("title",title)             //data属性
           .find(".todo_title")            //_todo-titleクラスの中身にtitleを挿入
           .text(title);
         $("#todos").prepend($li.fadeIn());  //todosの一番上にfadeinしながら追加

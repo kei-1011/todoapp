@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+*,
+*::before,
+*::after {
+}
+
+
 body {
   font-family: "Yu Gothic", YuGothic, sans-serif !important;
   width: 100%;

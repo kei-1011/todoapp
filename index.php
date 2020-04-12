@@ -28,9 +28,9 @@ $done_todos = $todoApp->getTrash();
   <h1 class="title">Todo List</h1>
   <div id="container" class="container">
 
-      <form action="" id="new_todo_form" class="mb-3">
+      <form action="" id="new_todo_form" class="todo-form">
         <div class="form-group">
-          <input type="text" id="new_todo" placeholder="what to do" autocomplete="off">
+          <input type="text" id="new_todo" class="new_todo" placeholder="what to do" autocomplete="off">
           <input type="submit" class="button" value="追加">
         </div>
       </form>
@@ -45,18 +45,18 @@ $done_todos = $todoApp->getTrash();
 
       <ul id="todos" class="todos">
         <?php foreach ($todos as $todo) : ?>
-          <li class="mb-3" id="todo_<?= h($todo->id); ?>" data-id="<?= h($todo->id); ?>" data-title="<?= h($todo->title); ?>">
+          <li class="mb-3 todo-item" id="todo_<?= h($todo->id); ?>" data-id="<?= h($todo->id); ?>" data-title="<?= h($todo->title); ?>">
             <input type="checkbox" class="update_todo form-check-input" <?php if ($todo->state === '1') { echo 'checked'; } ?>>
             <span class="todo_title <?php if ($todo->state === '1') { echo 'done'; } ?>"><?= h($todo->title); ?></span>
             <button type="button" class="btn btn-success delete_todo">削除</button>
-            <span class="elapsed_time"></span>
+            <!-- <span class="elapsed_time"></span> -->
           </li>
         <?php endforeach; ?>
 
-        <li id="todo_template" data-id="" class="mb-3">
+        <li id="todo_template" data-id="" class="mb-3 todo-item">
           <input type="checkbox" class="update_todo form-check-input">
           <span class="todo_title"></span>
-          <span class="elapsed_time"></span>
+          <!-- <span class="elapsed_time"></span> -->
           <button type="button" class="btn btn-success delete_todo">削除</button>
         </li>
       </ul>

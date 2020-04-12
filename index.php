@@ -64,7 +64,11 @@ $done_todos = $todoApp->getTrash();
   </div><!--container-->
 
   <div class="done-wrap">
+
     <div class="done_list">
+    <div class="btn-wrap">
+      <button class="done_open btn" id="js-done-open">終了タスクを表示</button>
+    </div>
       <ul class="done_todos">
       <?php foreach ($done_todos as $done_todo) : ?>
         <li id="done_<?= h($done_todo->id); ?>" class="done_todo" data-id="<?php echo $done_todo->id; ?>" data-title="<?php echo $done_todo->title; ?>">

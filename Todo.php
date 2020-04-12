@@ -43,7 +43,15 @@ class Todo
     /*
     fetchAllでオブジェクト形式で結果を返す
      */
+  }
 
+  public function getTrash()
+  {
+    $stmt = $this->_db->query("select * from todos where status='trash' order by date_time desc");
+    return $stmt->fetchAll(\PDO::FETCH_OBJ);
+    /*
+    fetchAllでオブジェクト形式で結果を返す
+     */
   }
 
   public function post()
@@ -65,6 +73,8 @@ class Todo
         return $this->_create();
       case 'delete':
         return $this->_delete();
+      case 'back':
+        return $this->_back();
     }
   }
 
@@ -141,10 +151,6 @@ class Todo
     if (!isset($_POST['id'])) {
       throw new \Exception('[delete] id not set!');
     }
-
-    date_default_timezone_set('Asia/Tokyo');
-    $date_time = date("Y-m-d H:i:s");
-
     /*
     DBからは削除せず、statusにtrashをつける
     同時に、削除日付を記憶するdate_time
@@ -155,4 +161,19 @@ class Todo
     $stmt->execute();
     return [];
   }
+
+  // 完了したタスクを元に戻す
+  private function _back()
+  {
+    if (!isset($_POST['id'])) {
+      throw new \Exception('[delete] id not set!');
+    }
+    /* タスク完了時にtrashにしたstatusをpublicに戻すだけ */
+    $sql = sprintf("update todos set created=created,status='public',date_time=now() where id = %d", $_POST['id']);
+    // $sql = sprintf("delete from todos where id = %d", $_POST['id']);
+    $stmt = $this->_db->prepare($sql);
+    $stmt->execute();
+    return [];
+  }
+
 }

@@ -47,17 +47,33 @@ $(function() {
       .parents("li")
       .data("id");
 
+    var title = $(this)
+      .parents("li")
+      .data("title");
+
       // ajax処理
       //消すかどうかを確認する confirm    if (confirm("このタスクを完了していいですか？")) {
       $.post(
         "_ajax.php",
         {
           id: id,
+          title: title,
           mode: "delete",       //modeをdeleteで渡す
           token: $("#token").val()
         },
         function() {      //終わった後の処理、id="todo_30"とかを消してあげるだけでいい
           $("#todo_" + id).slideUp(100);
+
+          var $li = $("#done_template").clone();
+          $li
+            .attr("id", "done_" + id)   //id
+            .data("id", id)             //data属性
+            .find(".todo_title")            //_todo-titleクラスの中身にtitleを挿入
+            .text(title);
+          $(".done_todos").prepend($li.fadeIn());  //todosの一番上にfadeinしながら追加
+          $("#new_todo")
+            .val("")
+            .focus();       //値をからにしてフォーカスを当てる
         }
       );
     // }    //confirm
@@ -93,4 +109,45 @@ $(function() {
     );
     return false; //submit時の画面の遷移を防ぐ
   });
+
+
+  // back
+  $(".done_todos").on("click", ".todo-back", function() {
+    // idを取得
+    var id = $(this)
+      .parents("li")
+      .data("id");
+
+    var title = $(this)
+      .parents("li")
+      .data("title");
+
+      // ajax処理
+      //消すかどうかを確認する confirm    if (confirm("このタスクを完了していいですか？")) {
+      $.post(
+        "_ajax.php",
+        {
+          id: id,
+          title: title,
+          mode: "back",       //modeを渡す
+          token: $("#token").val()
+        },
+        function(res) {
+          $("#done_" + id).slideUp(100);    // doneの処理はここまで
+
+          var $li = $("#todo_template").clone();
+        $li
+          .attr("id", "todo_" + id)   //id
+          .data("id", id)             //data属性
+          .find(".todo_title")            //_todo-titleクラスの中身にtitleを挿入
+          .text(title);
+        $("#todos").prepend($li.fadeIn());  //todosの一番上にfadeinしながら追加
+        $("#new_todo")
+          .val("")
+          .focus();       //値をからにしてフォーカスを当てる
+      }
+
+      );
+  });
+
 });

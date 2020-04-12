@@ -45,16 +45,21 @@ ul {
 
 .folder-btn {
   text-decoration: none;
-  color: #333;
-  background-color: #ccc;
+  color: #efefef;
+  background-color: steelblue;
   padding: 0.5em;
   border-radius: 4px;
+  transition:background 0.4s;
 }
 .folder-btn:hover {
-  opacity: 0.7;
+  background-color: #fff;
+  border:1px solid steelblue;
+  color:steelblue;
+
 }
 .folder ul li {
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .todo-list .todos {
@@ -113,6 +118,11 @@ ul {
 #todo_template {
   display: none;
 }
+
+#done_template {
+  display: none;
+}
+
 form {
   margin-bottom: 30px;
   width: 100%;
@@ -146,4 +156,39 @@ li.mb-3 {
   box-shadow: none; /* カーソル時の影消去 */
   color: #2cb696; /* 背景色     */
   background: #ffffff; /* 文字色     */
+}
+
+/*　終了したタスク */
+.done-wrap {
+  width: 960px;
+  max-width: 100%;
+  margin: 15px auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.done_list {
+  width: 63.6%;
+  margin-right: 9%;
+}
+
+.done_list .done_todos {
+  border: 1px solid #eee;
+}
+
+.done_todo {
+  margin-bottom: 16px;
+}
+
+.todo-back {
+  font-size: 18px;
+  margin-right: 5px;
+  vertical-align: middle;
+  transition:color 0.4s;
+  cursor:pointer;
+  color:#329AF0;
+}
+
+.todo-back:hover {
+  color:#333;
 }

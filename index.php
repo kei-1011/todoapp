@@ -43,21 +43,18 @@ $todos = $todoApp->getAll();
 
       <ul id="todos" class="todos">
         <?php foreach ($todos as $todo) : ?>
-        <pre>
-        <?php var_dump($todo->created);?>
-        </pre>
           <li class="mb-3" id="todo_<?= h($todo->id); ?>" data-id="<?= h($todo->id); ?>">
             <input type="checkbox" class="update_todo form-check-input" <?php if ($todo->state === '1') { echo 'checked'; } ?>>
             <span class="todo_title <?php if ($todo->state === '1') { echo 'done'; } ?>"><?= h($todo->title); ?></span>
-          <span class="elapsed-time"></span>
             <button type="button" class="btn btn-success delete_todo">削除</button>
+            <span class="elapsed_time"></span>
           </li>
         <?php endforeach; ?>
 
         <li id="todo_template" data-id="" class="mb-3">
           <input type="checkbox" class="update_todo form-check-input">
           <span class="todo_title"></span>
-          <span class="elapsed-time"></span>
+          <span class="elapsed_time"></span>
           <button type="button" class="btn btn-success delete_todo">削除</button>
         </li>
       </ul>

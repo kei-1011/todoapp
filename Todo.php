@@ -38,7 +38,7 @@ class Todo
 
   public function getAll()
   {
-    $stmt = $this->_db->query("select * from todos order by id desc");
+    $stmt = $this->_db->query("select * from todos where status='public' order by id desc");
     return $stmt->fetchAll(\PDO::FETCH_OBJ);
     /*
     fetchAllでオブジェクト形式で結果を返す
@@ -124,7 +124,7 @@ class Todo
       throw new \Exception('[create] title not set!');    //errorを返す
     }
 
-    $sql = "insert into todos (title) values (:title)";   //プレースホルダー？文字列だから？
+    $sql = "insert into todos (title,status) values (:title,'public')";   //プレースホルダー？文字列だから？
     $stmt = $this->_db->prepare($sql);
     $stmt->execute([':title' => $_POST['title']]);
 
@@ -142,10 +142,17 @@ class Todo
       throw new \Exception('[delete] id not set!');
     }
 
-    $sql = sprintf("delete from todos where id = %d", $_POST['id']);
+    date_default_timezone_set('Asia/Tokyo');
+    $date_time = date("Y-m-d H:i:s");
+
+    /*
+    DBからは削除せず、statusにtrashをつける
+    同時に、削除日付を記憶するdate_time
+    */
+    $sql = sprintf("update todos set created=created,status='trash',date_time=now() where id = %d", $_POST['id']);
+    // $sql = sprintf("delete from todos where id = %d", $_POST['id']);
     $stmt = $this->_db->prepare($sql);
     $stmt->execute();
-
     return [];
   }
 }

@@ -175,6 +175,26 @@ body {
 /* 　終了したタスク
 -----------------------------------------------*/
 
+.btn-wrap {
+  text-align: right;
+  margin-bottom: 20px;
+}
+.done_open {
+  display: inline-block;
+  color: lightseagreen;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  border:1px solid lightseagreen;
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  transition: 0.3s;
+  font-size: 12px;
+}
+.done_open:hover {
+  text-decoration: underline;
+}
+
 .done-wrap {
   width: 960px;
   max-width: 100%;
@@ -188,10 +208,19 @@ body {
   margin-right: 5%;
 }
 
-.done_list .done_todos {
+.done_todos {
   padding: 16px;
   border: 1px solid #eee;
+  transition:all 0.2s ease;
+  transform:translateY(10%);
+  opacity:0;
 }
+
+.is-open-dones .done_todos {
+  transform:translateY(0);
+  opacity:1;
+}
+
 
 .done_todo {
   margin-bottom: 16px;

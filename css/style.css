@@ -2,6 +2,9 @@
 
 body {
   font-family: "Yu Gothic", YuGothic, sans-serif !important;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .container {
@@ -13,10 +16,31 @@ body {
   justify-content: center;
 }
 
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding: 16px;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
 .folder {
-display: none;
-  /* margin: 70px 30px 0 0;
-  border: 1px solid #eee; */
+  margin: 0 30px 0 0;
+  border: 1px solid #eee;
+  width: 15%;
 }
 
 .folder-btn {
@@ -32,23 +56,13 @@ display: none;
 .folder ul li {
   margin-bottom: 10px;
 }
-.title {
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 32px;
-}
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  padding: 16px;
-}
-.todo-list ul {
+.todo-list .todos {
   border: 1px solid #eee;
+  width: 60%;
 }
 
-ul > li {
+.todos > li {
   padding-bottom: 10px;
 }
 
@@ -96,11 +110,12 @@ ul > li {
 }
 form {
   margin-bottom: 30px;
+  width: 100%;
 }
 
 form .form-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 li.mb-3 {
@@ -108,7 +123,7 @@ li.mb-3 {
   border-bottom: 1px solid #eee;
 }
 
-input[type="submit"] {
+.button {
   display: inline-block;
   border-radius: 10%; /* 角丸       */
   font-size: 16px; /* 文字サイズ */
@@ -122,7 +137,7 @@ input[type="submit"] {
   box-shadow: 1px 2px 6px #ccc; /* 影の設定 */
   border: 1px solid #2cb696; /* 枠の指定 */
 }
-input[type="submit"]:hover {
+.button:hover {
   box-shadow: none; /* カーソル時の影消去 */
   color: #2cb696; /* 背景色     */
   background: #ffffff; /* 文字色     */

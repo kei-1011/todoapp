@@ -20,7 +20,7 @@ class Todo
     $this->_createToken();
 
     try {
-      $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);
+      $this->_db = new \PDO(DSN, DB_USERNAME, DB_PASSWORD);         //config.phpで定義したDB情報
       $this->_db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     } catch (\PDOException $e) {
       echo $e->getMessage();
